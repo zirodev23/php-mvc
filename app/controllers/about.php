@@ -1,8 +1,8 @@
 <?php
 
-Class Home {
+Class About {
     function index() {
-        $this->view("home");
+        $this->view("about");
     }
 
     function view($view) {
