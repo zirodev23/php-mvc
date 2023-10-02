@@ -37,10 +37,8 @@ Class App {
     }
 
     private function splitURL() {
-        // var_dump($_GET);
-        // $url = nosacjums ? izpilda ja ir true : izpilda ja ir false
-        // $url = (1 == 2) ? "/" : "/citslink";
-        return explode("/", filter_var(trim($_GET["url"], "/"), FILTER_SANITIZE_URL));
+        $url = empty($_GET["url"]) ? 'home' : $_GET["url"];
+        return explode("/", filter_var(trim($url, "/"), FILTER_SANITIZE_URL));
     } 
 
 }
