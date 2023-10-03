@@ -1,7 +1,7 @@
 <?php
 
 Class Database {
-    $db_connection = null;
+    private $db_connection = null;
 
     function connect(){
         try {
@@ -15,12 +15,13 @@ Class Database {
             die("Wrong DB credentials!");
         }
 
-        return $db_connection;
+        // return $db_connection;
     }
 
     function read($query){
         if($this->db_connection){
-            return $result = mysqli_query($this->db_connection, $query);
+            $result = mysqli_query($this->db_connection, $query);
+            return $result;
         }
     }   
 }
