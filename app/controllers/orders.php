@@ -12,4 +12,14 @@ Class Orders extends Controller {
 
         $this->view("orders", ["orders" => $orders]);
     }
+
+    function show($id = null){
+        if(isset($id)){
+            $db = new Database();
+            $db->connect();
+            $order = $db->read("select * from orders where order_id={$id};")[0];
+
+            $this->view("order", ["order" => $order]);
+        }
+    }
 }
