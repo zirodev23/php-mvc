@@ -8,16 +8,8 @@ Class Orders extends Controller {
 
         $db = new Database();
         $db->connect();
-        $result = $db->read("select * from orders;");
+        $orders = $db->read("select * from orders;");
 
-        while($record = mysqli_fetch_assoc($result)) {
-            show($record);
-            echo '<p>'.$record['order_id'].'</p>';
-            echo '<p>'.$record['status'].'</p>';
-            echo '<p>'.$record['comments'].'</p>';
-            echo '<hr>';
-        }
-
-        $this->view("orders");
+        $this->view("orders", ["orders" => $orders]);
     }
 }

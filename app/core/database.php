@@ -20,8 +20,12 @@ Class Database {
 
     function read($query){
         if($this->db_connection){
+            $records = [];
             $result = mysqli_query($this->db_connection, $query);
-            return $result;
+            while($record = mysqli_fetch_assoc($result)) {
+                array_push($records, $record);
+            }
+            return $records;
         }
     }   
 }
