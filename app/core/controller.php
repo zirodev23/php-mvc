@@ -9,10 +9,10 @@ Class Controller {
         }
     }
 
-    protected function loadModel($model) {
+    protected function loadModel($model, $attributes) {
         if(file_exists("../app/models/" . $model . ".php")){
             include "../app/models/" . $model . ".php";
-            return $model = new $model();
+            return $model = new $model($attributes);
         }
         echo "model file was not found";
         return false;

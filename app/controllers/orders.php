@@ -4,7 +4,7 @@ Class Orders extends Controller {
     function index(){
         echo "Order controller, index method";
 
-        $model = $this->loadModel("ordermodel");
+        $model = $this->loadModel("ordermodel", null);
 
         $db = new Database();
         $db->connect();
@@ -19,7 +19,9 @@ Class Orders extends Controller {
             $db->connect();
             $order = $db->read("select * from orders where order_id={$id};")[0];
 
-            $this->view("order", ["order" => $order]);
+            $order_inst = $this->loadModel("ordermodel", $order);
+
+            $this->view("order", ["order" => $order, "order_inst" => $order_inst]);
         }
     }
 }
